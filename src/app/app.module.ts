@@ -9,6 +9,7 @@ import {
 	AgmCoreModule,
 	GoogleMapsAPIWrapper
 } from '@agm/core';
+import {AgmDirectionModule} from 'agm-direction';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {
 		AppRoutingModule,
 		AgmCoreModule.forRoot({
 			apiKey:'AIzaSyBbKr0Hy1qhoTitjISVrqf8ZAAnS2DHReQ'
-		})
+		}),
+		AgmDirectionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

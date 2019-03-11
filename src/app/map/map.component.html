@@ -1,10 +1,14 @@
-<p>
-	{{map}}
-  map works!
-</p>
-<agm-map
-	[latitude]="lat"
-	[longitude]="lng"
-	[zoom]="zoom"
-	>
-</agm-map>
+<div ng-if=false>
+	<agm-map
+		[latitude]="lat"
+		[longitude]="lng"
+		[zoom]="zoom"
+		>
+		<agm-direction 
+			[origin]="origin"
+			[waypoints] ="waipoints"
+			[destination]="destination"
+			>
+		</agm-direction>
+	</agm-map>
+</div>
