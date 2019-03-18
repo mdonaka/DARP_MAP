@@ -10,6 +10,9 @@ import {
 	GoogleMapsAPIWrapper
 } from '@agm/core';
 import {AgmDirectionModule} from 'agm-direction';
+import { environment } from './../environments/environment.prod';
+
+console.log(environment);
 
 @NgModule({
   declarations: [
@@ -20,11 +23,12 @@ import {AgmDirectionModule} from 'agm-direction';
     BrowserModule,
 		AppRoutingModule,
 		AgmCoreModule.forRoot({
-			apiKey:'AIzaSyBbKr0Hy1qhoTitjISVrqf8ZAAnS2DHReQ'
+			apiKey:environment.GOOGLE_MAP_API_KEY
 		}),
 		AgmDirectionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
+
