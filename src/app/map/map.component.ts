@@ -16,7 +16,7 @@ export class MapComponent implements OnInit {
 
 	waipoints: any = [];
 
-	debugFlg:bool = false;
+	debugFlg:Boolean = false;
 
 	constructor() {	}
 
