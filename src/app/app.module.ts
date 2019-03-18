@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,7 +26,8 @@ console.log(environment);
 		AgmCoreModule.forRoot({
 			apiKey:environment.GOOGLE_MAP_API_KEY
 		}),
-		AgmDirectionModule
+		AgmDirectionModule,
+		FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
