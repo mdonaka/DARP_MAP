@@ -21,15 +21,21 @@ export class MapComponent implements OnInit {
 	constructor(private mapService: MapService) {	}
 
   ngOnInit() {
-		this.mapService.getOrigin()
+		this.mapService.origin
 			.subscribe(og => this.origin = og);
-		this.mapService.getDestination()
-			.subscribe(og => this.destination = og);
-		this.mapService.getWayPoints()
-			.subscribe(og => this.waypoints = og);
+		this.mapService.destination
+			.subscribe(des => this.destination = des);
+		this.mapService.wayPointsSub
+			.subscribe(wp => this.waypoints = wp);
+		this.mapService.init();
   }
 
 	onChange(event:any){
 		this.mapService.onChange(event);
+	}
+
+	debug():void{
+		console.log("-- debug --");
+		this.origin = {lat:35.703667, lng:139.753393};
 	}
 }
