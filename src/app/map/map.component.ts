@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MapService} from '../map.service'
 
 @Component({
   selector: 'app-map',
@@ -7,33 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapComponent implements OnInit {
 
-  lat: number = 35.681167;
-  lng: number = 139.767052;
-  zoom: number = 16;
+  private lat: number = 35.681167;
+  private lng: number = 139.767052;
+  private zoom: number = 16;
 
 	origin: any;
 	destination: any;
-
-	waipoints: any = [];
+	waypoints: any;
 
 	debugFlg:Boolean = false;
 
-	distanceList:number =[];
-
-	constructor() {	}
+	constructor(private mapService: MapService) {	}
 
   ngOnInit() {
-		this.getDirection();
+		this.mapService.getOrigin()
+			.subscribe(og => this.origin = og);
+		this.mapService.getDestination()
+			.subscribe(og => this.destination = og);
+		this.mapService.getWayPoints()
+			.subscribe(og => this.waypoints = og);
   }
 
-	getDirection(){
-		this.origin = {lat:35.681167, lng: 139.767052};
-		this.destination = {lat:35.681167, lng: 139.767052};
-		this.waipoints.push({location:{lat:35.703667, lng:139.753393}});
-		this.waipoints.push({location:{lat:35.698383, lng:139.773072}});
-	}
 	onChange(event:any){
-		console.log(event);
-		this.distanceList=event.routes[0].legs.map(leg => leg.distance.value);
+		this.mapService.onChange(event);
 	}
 }

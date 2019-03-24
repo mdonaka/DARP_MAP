@@ -5,9 +5,7 @@
  	[(ngModel)]="debugFlg">
 </div>
 
-<div *ngFor="let dis of distanceList">
-	<span>{{dis}}</span>
-</div>
+<app-distance></app-distance>
 
 <div *ngIf="debugFlg">
 	<agm-map
@@ -17,11 +15,10 @@
 		>
 		<agm-direction 
 			[origin]="origin"
-			[waypoints] ="waipoints"
+			[waypoints] ="waypoints"
 			[destination]="destination"
 			(onChange)="onChange($event)"
 			>
 		</agm-direction>
 	</agm-map>
 </div>
-<app-distance></app-distance>
