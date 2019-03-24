@@ -12,13 +12,13 @@ import {
 } from '@agm/core';
 import {AgmDirectionModule} from 'agm-direction';
 import { environment } from './../environments/environment.prod';
-
-console.log(environment);
+import { DistanceComponent } from './distance/distance.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MapComponent
+    MapComponent,
+    DistanceComponent
   ],
   imports: [
     BrowserModule,

@@ -18,6 +18,8 @@ export class MapComponent implements OnInit {
 
 	debugFlg:Boolean = false;
 
+	distanceList:number =[];
+
 	constructor() {	}
 
   ngOnInit() {
@@ -29,5 +31,9 @@ export class MapComponent implements OnInit {
 		this.destination = {lat:35.681167, lng: 139.767052};
 		this.waipoints.push({location:{lat:35.703667, lng:139.753393}});
 		this.waipoints.push({location:{lat:35.698383, lng:139.773072}});
+	}
+	onChange(event:any){
+		console.log(event);
+		this.distanceList=event.routes[0].legs.map(leg => leg.distance.value);
 	}
 }
