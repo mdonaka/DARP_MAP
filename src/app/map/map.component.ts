@@ -34,12 +34,4 @@ export class MapComponent implements OnInit {
 		this.mapService.onChange(event);
 	}
 
-	debug():void{
-		this.lat = 42.47735;
-		this.lng = 143.27651;
-		console.log("-- debug --");
-		console.log(this.origin,this.destination);
-		this.mapService.change(0,1);
-		console.log(this.origin,this.destination);
-	}
 }

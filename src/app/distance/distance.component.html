@@ -3,7 +3,9 @@
 	<input type="file" (change)="selectFile($event)"> 
 </form>
 
+<input type="text" [(ngModel)]="num">
+<button (click)="generateRoot()">generate</button>
 <div>distance</div>
 <div *ngFor="let dis of distanceList">
-	<span>{{dis}}</span>
+	<span>{{name1}},{{name2}},{{dis}}</span>
 </div>
