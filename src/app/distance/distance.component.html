@@ -1,4 +1,9 @@
-<span>distance</span>
+
+<form>
+	<input type="file" (change)="selectFile($event)"> 
+</form>
+
+<div>distance</div>
 <div *ngFor="let dis of distanceList">
 	<span>{{dis}}</span>
 </div>

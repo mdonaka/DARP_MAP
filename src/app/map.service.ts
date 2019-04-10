@@ -13,19 +13,32 @@ export class MapService {
 	wayPointsSub:Subject<any> = new Subject<any>();
 
 	distanceList:Subject<number[]> = new Subject<number[]>();
-	
+
+	pList: any = [
+		{lat:42.47735, lng:143.27535},
+		{lat:42.47805, lng:143.27651}
+	];
+
+
 	constructor() {}
 
 	init(): void{
-		this.origin.next({lat:35.681167, lng:139.767052});
-		this.destination.next({lat:35.681167, lng: 139.767052});
-		this.waypoints.push({location:{lat:35.703667, lng:139.753393}});
-		this.waypoints.push({location:{lat:35.698383, lng:139.773072}});
-		this.wayPointsSub.next(this.waypoints);
+		this.origin.next(this.pList[0]);
+		this.destination.next(this.pList[1]);
+		// this.waypoints.push({location:{lat:35.703667, lng:139.753393}});
+		// this.waypoints.push({location:{lat:35.698383, lng:139.773072}});
+		// this.wayPointsSub.next(this.waypoints);
 	}
 
 	onChange(event:any){
 		this.distanceList.next(event.routes[0].legs.map(leg => leg.distance.value));
+	}
+
+	change(i:any,j:any){
+		this.origin.next(this.pList[0]);
+		this.destination.next(this.pList[0]);
+		// this.waypoints.push({location:this.pList[0]});
+		// this.wayPointsSub.next(this.waypoints);
 	}
 
 	getWayPoints():Observable<any>{

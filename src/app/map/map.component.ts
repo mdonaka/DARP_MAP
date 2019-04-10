@@ -8,8 +8,8 @@ import {MapService} from '../map.service'
 })
 export class MapComponent implements OnInit {
 
-  private lat: number = 35.681167;
-  private lng: number = 139.767052;
+  private lat: number = 42.47735;
+  private lng: number = 143.27535;
   private zoom: number = 16;
 
 	origin: any;
@@ -35,7 +35,11 @@ export class MapComponent implements OnInit {
 	}
 
 	debug():void{
+		this.lat = 42.47735;
+		this.lng = 143.27651;
 		console.log("-- debug --");
-		this.origin = {lat:35.703667, lng:139.753393};
+		console.log(this.origin,this.destination);
+		this.mapService.change(0,1);
+		console.log(this.origin,this.destination);
 	}
 }
