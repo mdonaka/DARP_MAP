@@ -36,7 +36,7 @@ export class DistanceComponent implements OnInit {
 		reader.readAsText(file);
 		let dataList = [];
 		reader.addEventListener( 'load', () => {
-			let data = reader.result.split('\n');
+			let data = (reader.result as string).split('\n');
 			for(let val of data){
 				dataList.push(val.split(','));
 			} 
