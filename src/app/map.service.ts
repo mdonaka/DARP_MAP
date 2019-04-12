@@ -42,6 +42,14 @@ export class MapService {
 		this.name1_ = [];
 		this.name2_ = [];
 		this.waypoints = [];
+		/**/
+		this.origin.next(this.pList[0][0]);	
+		for(let j = 1;j<this.pList.length-1;++j){
+			this.waypoints.push({location:this.pList[j][0]});
+		}
+		this.destination.next(this.pList[this.pList.length-1][0]);
+		this.wayPointsSub.next(this.waypoints);
+		/*/
 		this.origin.next(this.pList[i][0]);
 		this.destination.next(this.pList[i][0]);
 		this.name1_.push(this.pList[i][1]);
@@ -58,6 +66,7 @@ export class MapService {
 		this.wayPointsSub.next(this.waypoints);
 		this.name1.next(this.name1_);
 		this.name2.next(this.name2_);
+		/**/
 	}
 
 	updateList(list:any){

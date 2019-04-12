@@ -17,7 +17,9 @@ export class DistanceComponent implements OnInit {
 
 	file:any;
 
-	num:number=1;
+	num:number=0;
+
+	gen:String = "not set";
 
 	constructor(private mapService: MapService) {	}
 
@@ -46,5 +48,6 @@ export class DistanceComponent implements OnInit {
 
 	generateRoot(){
 		this.mapService.change(this.num);
+		this.gen = "set";
 	}
 }

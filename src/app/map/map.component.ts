@@ -18,6 +18,10 @@ export class MapComponent implements OnInit {
 
 	debugFlg:Boolean = false;
 
+	/**/
+	opt:Boolean = true;/*/
+	opt:Boolean = false;
+	/**/
 	constructor(private mapService: MapService) {	}
 
   ngOnInit() {

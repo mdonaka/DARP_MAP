@@ -7,8 +7,6 @@
 
 <app-distance></app-distance>
 
-<button (click)="debug()" value="debug">debug</button>
-
 <div *ngIf="debugFlg">
 	<agm-map
 		[latitude]="lat"
@@ -19,7 +17,7 @@
 			[origin]="origin"
 			[waypoints] ="waypoints"
 			[destination]="destination"
-			[optimizeWaypoints]="False"
+			[optimizeWaypoints]="opt"
 			(onChange)="onChange($event)"
 			>
 		</agm-direction>
