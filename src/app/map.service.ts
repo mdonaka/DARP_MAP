@@ -13,9 +13,11 @@ export class MapService {
 	wayPointsSub:Subject<any> = new Subject<any>();
 
 	distanceList:Subject<number[]> = new Subject<number[]>();
-
-	name1:Subject<String> = new Subject<String>();
-	name2:Subject<String> = new Subject<String>();
+ 
+	name1_:String[] = [];
+	name2_:String[] = [];
+	name1:Subject<String[]> = new Subject<String[]>();
+	name2:Subject<String[]> = new Subject<String[]>();
 
 	
 	pList: any = [
@@ -29,9 +31,7 @@ export class MapService {
 	init(): void{
 		this.origin.next(this.pList[0][0]);
 		this.destination.next(this.pList[1][0]);
-		// this.waypoints.push({location:{lat:35.703667, lng:139.753393}});
 		// this.waypoints.push({location:{lat:35.698383, lng:139.773072}});
-		// this.wayPointsSub.next(this.waypoints);
 	}
 
 	onChange(event:any){
@@ -39,12 +39,25 @@ export class MapService {
 	}
 
 	change(i:any){
-		this.origin.next(this.pList[0][0]);
+		this.name1_ = [];
+		this.name2_ = [];
+		this.waypoints = [];
+		this.origin.next(this.pList[i][0]);
 		this.destination.next(this.pList[i][0]);
-		// this.waypoints.push({location:this.pList[0]});
-		// this.wayPointsSub.next(this.waypoints);
-		this.name1.next(this.pList[0][1]);
-		this.name2.next(this.pList[i][1]);
+		this.name1_.push(this.pList[i][1]);
+		for(let j = 0;j<this.pList.length;++j){
+			this.waypoints.push({location:this.pList[j][0]});
+			this.waypoints.push({location:this.pList[i][0]});
+			this.name2_.push(this.pList[j][1]);
+			this.name1_.push(this.pList[j][1]);
+			this.name2_.push(this.pList[i][1]);
+			this.name1_.push(this.pList[i][1]);
+		}
+		this.name2_.push(this.pList[i][1]);
+
+		this.wayPointsSub.next(this.waypoints);
+		this.name1.next(this.name1_);
+		this.name2.next(this.name2_);
 	}
 
 	updateList(list:any){
@@ -52,7 +65,6 @@ export class MapService {
 		for(let val of list){
 			this.pList.push([{lat:parseFloat(val[1]), lng:parseFloat(val[2])},val[0]]);
 		}
-		console.log(this.pList);
 	}
 	
 	getWayPoints():Observable<any>{

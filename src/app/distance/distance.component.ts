@@ -12,8 +12,8 @@ export class DistanceComponent implements OnInit {
 
 	fileText:number[] = [];
 
-	name1:String = "";
-	name2:String = "";
+	name1:String[] = ["a1","a2"];
+	name2:String[] = ["b1","b2"];
 
 	file:any;
 
